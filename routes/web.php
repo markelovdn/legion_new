@@ -22,8 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/delUser/{id}', 'UserController@delUser');
 });
 
-Route::get('/2', 'UserController@test');
-
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -32,22 +30,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/1',
-    function () {
-        $reg = new RegisterController();
-        if ($reg->regUser()) {
-            echo 'success';
-        }
-    });
 
-Route::get('/faker', function () {
-
-    DB::table('users')->insert([
-        'name' => str_random(10),
-        'email' => str_random(10).'@gmail.com',
-        'password' => bcrypt('secret'),
-    ]);
-});
 
 
 
